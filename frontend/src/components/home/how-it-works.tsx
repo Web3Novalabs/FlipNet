@@ -56,7 +56,7 @@ const HowItWorks = () => {
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Stake & Win</h3>
                 <p className="text-gray-400">
-                  Place your stake on the outcome you predict. If you're right,
+                  Place your stake on the outcome you predict. If you&apos;re right,
                   earn rewards instantly.
                 </p>
               </div>

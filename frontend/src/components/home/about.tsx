@@ -13,7 +13,7 @@ const About = () => {
             </h2>
             <p className="text-gray-300 text-lg leading-relaxed">
               FlipNet is revolutionizing prediction markets by leveraging
-              Starknet's powerful Layer 2 scaling solution. Our platform allows
+              Starknet&apos;s powerful Layer 2 scaling solution. Our platform allows
               users to stake tokens on the outcomes of various events, from
               sports and politics to crypto markets and global events.
             </p>
