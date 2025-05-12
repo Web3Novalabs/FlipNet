@@ -7,10 +7,12 @@ import HowItWorks from "@/components/home/how-it-works";
 import MarketsPreview from "@/components/home/markets-preview";
 import Cta from "@/components/home/cta";
 import Footer from "@/components/home/footer";
+import AgeVerificationModal from "@/components/common/age-verification-modal";
 
 export default function Home() {
   return (
     <div>
+      <AgeVerificationModal />
       <Header />
       <Hero />
       <Stats />
