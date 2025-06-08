@@ -1,9 +1,39 @@
+"use client";
+
 import React from "react";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import price_prediction from "@/assets/images/crypto-price-prediction.jpg";
+import { useWallet } from "../../context/WalletContext";
+import Link from "next/link";
 
 const MarketsPreview = () => {
+  const { isConnected } = useWallet();
+
+  const markets = [
+    {
+      title: "Crypto Price Prediction",
+      description: "Will ETH reach $5,000 by end of Q2 2025?",
+      category: "Crypto",
+      liquidity: "$128,450",
+      endTime: "3d 5h",
+    },
+    {
+      title: "Sports Outcome",
+      description: "Lakers to win NBA Championship 2025",
+      category: "Sports",
+      liquidity: "$245,780",
+      endTime: "2mo 15d",
+    },
+    {
+      title: "Market Trends",
+      description: "S&P 500 to close above 6,000 next month",
+      category: "Finance",
+      liquidity: "$89,230",
+      endTime: "28d 12h",
+    },
+  ];
+
   return (
     <div>
       {/* Markets Preview Section */}
@@ -20,29 +50,7 @@ const MarketsPreview = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Crypto Price Prediction",
-                description: "Will ETH reach $5,000 by end of Q2 2025?",
-                category: "Crypto",
-                liquidity: "$128,450",
-                endTime: "3d 5h",
-              },
-              {
-                title: "Sports Outcome",
-                description: "Lakers to win NBA Championship 2025",
-                category: "Sports",
-                liquidity: "$245,780",
-                endTime: "2mo 15d",
-              },
-              {
-                title: "Market Trends",
-                description: "S&P 500 to close above 6,000 next month",
-                category: "Finance",
-                liquidity: "$89,230",
-                endTime: "28d 12h",
-              },
-            ].map((market, index) => (
+            {markets.map((market, index) => (
               <div
                 key={index}
                 className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden transition duration-300 transform hover:scale-105 hover:shadow-xl border border-gray-700/50 group"
@@ -76,21 +84,34 @@ const MarketsPreview = () => {
                       <span className="text-indigo-400">{market.endTime}</span>
                     </div>
                   </div>
-                  <button className="mt-4 w-full py-2 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/40 transition-colors border border-indigo-600/50 text-indigo-400">
-                    View Market
-                  </button>
+                  {isConnected ? (
+                    <Link
+                      href={`/markets/${index}`}
+                      className="mt-4 w-full py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 transition-colors text-white text-center block"
+                    >
+                      View Market
+                    </Link>
+                  ) : (
+                    <button
+                      className="mt-4 w-full py-2 rounded-lg bg-indigo-600/20 text-indigo-400 cursor-not-allowed"
+                      disabled
+                      title="Connect wallet to view market"
+                    >
+                      Connect Wallet to View
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <a
-              href="#"
+            <Link
+              href="/markets"
               className="text-indigo-400 hover:text-indigo-300 inline-flex items-center transition-colors font-medium"
             >
               View All Markets <ChevronRight size={18} className="ml-1" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
