@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ChevronRight, TrendingUp, Menu, X } from "lucide-react";
+import { TrendingUp, Menu, X } from "lucide-react";
 import { WalletConnect } from "../WalletConnect";
 
 const Header = () => {
