@@ -2,13 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 const AgeVerificationModal = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [fullName, setFullName] = useState("");
   const [error, setError] = useState("");
-  const router = useRouter();
 
   useEffect(() => {
     const hasVerified = localStorage.getItem("ageVerified");
@@ -59,7 +57,7 @@ const AgeVerificationModal = () => {
           />
           {error && <div className="text-red-400 text-xs mb-2">{error}</div>}
           <p className="text-xs text-gray-400 mb-4">
-            By clicking "Verify Age", you agree to the game's{" "}
+            By clicking &quot;Verify Age&quot;, you agree to the game&apos;s{" "}
             <a
               href="#"
               className="text-purple-400 underline hover:text-indigo-400"
